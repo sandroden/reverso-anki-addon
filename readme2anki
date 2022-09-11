@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# ankiweb tries hard to make life difficult for developers
+# only b, img, a, code, ul, ol, li are supported..
+
+markdown README.md |
+    sed 's!<p>!!g' |
+    sed 's/strong/b/g' |
+    sed 's!</p>!!g'|
+    tee /tmp/README.anki|
+    xclip -selection c
+
+cat /tmp/README.anki
